@@ -1,0 +1,106 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{note-template}[2025/02/08 Custom Note Template]
+
+% 基础包加载
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{mdframed}
+\RequirePackage{xeCJK}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{tikz}
+\RequirePackage{hyperref}
+\RequirePackage{fontawesome5}
+\RequirePackage{calligra}
+
+% 颜色与间距定义
+\definecolor{defblue}{RGB}{52,118,203}
+\definecolor{thmorange}{RGB}{215,89,23}
+\definecolor{exagreen}{RGB}{67,160,71}
+\definecolor{probred}{RGB}{184,49,47}
+\definecolor{solgreen}{RGB}{46,139,87}
+
+\newlength{\thmtopspace}\setlength{\thmtopspace}{12pt}
+\newlength{\thmbottomspace}\setlength{\thmbottomspace}{12pt}
+
+% 页面设置
+\geometry{a4paper, top=2.54cm, bottom=2.54cm, left=3.18cm, right=3.18cm, headheight=20pt}
+
+% 统一盒子样式
+\mdfdefinestyle{theoremstyle}{
+    linewidth=2pt,
+    topline=false,
+    rightline=false,
+    bottomline=false,
+    leftline=true,
+    innertopmargin=\thmtopspace,
+    innerbottommargin=\thmbottomspace,
+    innerrightmargin=12pt,
+    innerleftmargin=15pt,
+    skipabove=\baselineskip,
+    skipbelow=\baselineskip,
+    needspace=3\baselineskip,
+    splitbottomskip=\thmbottomspace,
+    splittopskip=\thmtopspace,
+    frametitleaboveskip=6pt,
+    frametitlebelowskip=6pt,
+    frametitlerule=false,
+    frametitlefont=\bfseries
+}
+
+% 统一环境定义
+\newmdtheoremenv[style=theoremstyle,linecolor=defblue,backgroundcolor=defblue!8,
+    frametitle={\color{defblue}}]{definition}{定义}
+\newmdtheoremenv[style=theoremstyle,linecolor=thmorange,backgroundcolor=thmorange!8,
+    frametitle={\color{thmorange}}]{theorem}{定理}
+\newmdtheoremenv[style=theoremstyle,linecolor=exagreen,backgroundcolor=exagreen!8,
+    frametitle={\color{exagreen}}]{example}{重要实例}
+\newmdtheoremenv[style=theoremstyle,linecolor=probred,backgroundcolor=probred!8,
+    frametitle={\color{probred}}]{problem}{例题}
+\newmdtheoremenv[style=theoremstyle,linecolor=solgreen,backgroundcolor=solgreen!8,
+    frametitle={\color{solgreen}}]{solution}{解答}
+\newmdtheoremenv[style=theoremstyle,linecolor=defblue,backgroundcolor=defblue!8,
+    frametitle={\color{defblue}}]{strategy}{解题思路}
+
+% 全局设置
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{2.5ex plus 1ex minus .2ex}{1.3ex plus .2ex}
+\setlist{labelindent=\parindent,leftmargin=*,itemsep=3pt,parsep=0pt}
+
+% 页眉页脚
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\normalsize\@title}
+\fancyhead[R]{\normalsize 第 \thepage 页}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hrule width\headwidth height\headrulewidth}
+
+% 超链接设置
+\hypersetup{colorlinks=false,linkbordercolor=white,urlbordercolor=white,pdfborderstyle={/S/U/W 0}}
+
+% 实用命令
+\newcommand{\important}[1]{\textcolor{probred}{\textbf{#1}}}
+\newcommand{\newproblem}{\clearpage}
+
+% 标题页设置
+\renewcommand{\maketitle}{%
+    \begin{center}
+        \vspace*{-15pt}
+        % 标题
+        {\LARGE\bfseries\color{defblue}\@title}
+        
+        \vspace{12pt}
+        % 作者和链接
+        {\large\bfseries\color{defblue!80}{\calligra Xuan}\,
+        \href{mailto:hexuanr@126.com}{\color{defblue!80}\faEnvelope}
+        \href{https://github.com/Thunsis}{\color{defblue!80}\faGithub}}
+        
+        \vspace{8pt}
+        % 日期
+        {\large\bfseries\itshape\color{defblue}\@date}
+        
+        \vspace{20pt}
+    \end{center}
+}

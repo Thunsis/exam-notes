@@ -1,0 +1,121 @@
+% !TeX program = xelatex
+\documentclass{ctexart}
+\usepackage{../../../templates/note-template}
+
+\title{函数极限与连续性}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{函数极限的定义}
+函数极限是微积分中最基本的概念之一，它描述了函数在某一点附近的行为特征。
+
+\begin{definition}[函数极限]
+设函数 $f(x)$ 在点 $x_0$ 的某去心邻域内有定义，如果存在常数 $A$，对于任意给定的正数 $\varepsilon$，总存在正数 $\delta$，当 $0<|x-x_0|<\delta$ 时，有：
+\[ |f(x)-A|<\varepsilon \]
+则称 $A$ 为 $f(x)$ 当 $x \to x_0$ 时的极限，记为：
+\[ \lim_{x \to x_0} f(x) = A \]
+\end{definition}
+
+这个定义虽然看起来复杂，但本质上描述的是函数值无限接近某个常数的过程。
+
+\section{极限的性质}
+极限的四则运算法则是解决极限问题的基本工具，掌握这些性质可以大大简化计算过程。
+
+\begin{theorem}[极限四则运算]
+设 $\lim\limits_{x \to x_0} f(x) = A$，$\lim\limits_{x \to x_0} g(x) = B$，则：
+\begin{enumerate}
+    \item $\lim\limits_{x \to x_0} [f(x) \pm g(x)] = A \pm B$
+    \item $\lim\limits_{x \to x_0} [f(x) \cdot g(x)] = A \cdot B$
+    \item $\lim\limits_{x \to x_0} \frac{f(x)}{g(x)} = \frac{A}{B}$ （当 $B \neq 0$）
+\end{enumerate}
+\end{theorem}
+
+这些性质告诉我们，在计算极限时，可以将复杂的表达式分解成简单的部分分别计算。
+
+\section{重要极限}
+在极限计算中，有几个特别重要的极限，它们构成了解决复杂极限问题的基础。
+
+\begin{example}[第一重要极限及其应用]
+\textbf{基本形式：}
+\[ \lim_{x \to 0} \frac{\sin x}{x} = 1 \]
+
+\textbf{相关变形：}
+\begin{itemize}
+    \item $\lim\limits_{x \to 0} \frac{\tan x}{x} = 1$
+    \item $\lim\limits_{x \to 0} \frac{\arcsin x}{x} = 1$
+    \item $\lim\limits_{x \to 0} \frac{1-\cos x}{x^2} = \frac{1}{2}$
+\end{itemize}
+
+\textbf{使用注意：}
+\begin{itemize}
+    \item $x$ 必须以弧度为单位
+    \item 分母必须是 $x$
+    \item 常与等价无穷小代换结合使用
+\end{itemize}
+
+\textbf{几何意义：}当 $x \to 0$ 时：
+\begin{itemize}
+    \item $\sin x \sim x$
+    \item $\tan x \sim x$
+    \item $1-\cos x \sim \frac{x^2}{2}$
+\end{itemize}
+\end{example}
+
+\begin{example}[第二重要极限及其应用]
+\textbf{基本形式：}
+\[ \lim_{x \to \infty} (1+\frac{1}{x})^x = e \]
+
+\textbf{常见变形：}
+\begin{itemize}
+    \item $\lim\limits_{n \to \infty} (1+\frac{1}{n})^n = e$
+    \item $\lim\limits_{x \to 0} (1+x)^{\frac{1}{x}} = e$
+    \item $\lim\limits_{x \to 0} \frac{\ln(1+x)}{x} = 1$
+\end{itemize}
+
+\textbf{应用技巧：}
+\begin{itemize}
+    \item 注意提取极限中的幂指数形式
+    \item 将复杂表达式转化为标准形式
+    \item 结合对数进行化简
+\end{itemize}
+
+\textbf{易错点：}
+\begin{itemize}
+    \item 底数和指数的变化需同步考虑
+    \item 注意变形时的等价替换
+    \item 区分极限不存在的情况
+\end{itemize}
+\end{example}
+
+\begin{example}[等价无穷小的应用]
+\textbf{常用等价无穷小（$x \to 0$）：}
+\begin{itemize}
+    \item $\sin x \sim x$
+    \item $\tan x \sim x$
+    \item $\arcsin x \sim x$
+    \item $\ln(1+x) \sim x$
+    \item $1-\cos x \sim \frac{x^2}{2}$
+    \item $(1+x)^\alpha-1 \sim \alpha x$
+\end{itemize}
+
+\textbf{使用原则：}
+\begin{enumerate}
+    \item 乘除可以替换
+    \item 加减需要相同阶数
+    \item 替换后不能出现未定式
+\end{enumerate}
+\end{example}
+
+\section{连续函数的性质}
+\begin{theorem}[连续函数的性质]
+设函数 $f(x)$ 在闭区间 $[a,b]$ 上连续，则：
+\begin{enumerate}
+    \item 有界性：$f(x)$ 在 $[a,b]$ 上有界
+    \item 最值定理：$f(x)$ 在 $[a,b]$ 上必取得最大值和最小值
+    \item 介值定理：对于任意介于最小值和最大值之间的值，函数都能取到
+\end{enumerate}
+\end{theorem}
+
+\end{document}
