@@ -1,0 +1,113 @@
+% !TeX program = xelatex
+\documentclass{ctexart}
+\usepackage{../../../templates/note-template}
+
+\title{函数极限与连续错题集}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{函数的概念与特性}
+
+\begin{strategy}[求函数]
+\textbf{题型特征：}
+\begin{itemize}
+    \item 给出自变量为x变形式的函数表达式，要求求出自变量为x的函数表达式
+    \item x变形式的函数表达式可能有一个或两个
+    \item x变形式可能是$-x$，$\dfrac{1}{x}$，$x+\dfrac{1}{x}$等形式
+\end{itemize}
+
+\textbf{解题思路：}
+\begin{enumerate}
+    \item x变形式的函数表达式有一个
+    \begin{itemize}
+        \item 想办法构造出复合函数所表达的式子，可利用换元法
+    \end{itemize}
+    
+    \item x变形式的函数表达式有两个
+    \begin{itemize}
+        \item 两个x变形式互换得新的函数表达式（一般互为相反数或倒数）
+        \item 与原函数表达式构成方程组，求解$f(x)$
+    \end{itemize}
+    
+\end{enumerate}
+
+\textbf{易错点总结：}
+\begin{itemize}
+    \item 没有解题思路惯性思维
+    \item 未能构造出复合函数所表达的式子
+    \item 未能正确互换两个x变形式
+    \item 未能正确构造出方程组
+    \item 未能正确求解$f(x)$（计算能力）
+\end{itemize}
+\end{strategy}
+
+\newproblem
+
+\begin{problem}[单x变形式求函数]
+设 $f\left(x+\dfrac{1}{x}\right) = \dfrac{x+x^{3}}{1+x^{4}}$，则当$x\geqslant2$时，$f(x)=\underline{\qquad}$．
+
+\end{problem}
+
+\begin{solution}
+
+\textbf{解答步骤：}
+\begin{enumerate}
+    \item \important{关键点}：想办法构造出$x+\dfrac{1}{x}$所表达的式子
+    
+    \item \textbf{详细过程：}
+    \[ \begin{aligned}
+    &f\left(x+\dfrac{1}{x}\right) = \dfrac{x+x^{3}}{1+x^{4}}\ \text{，令}\ x+\dfrac{1}{x}=t\ \text{，则}\ x^{2}+1=tx\ \text{，}\\
+    &\text{代入}\ f(t)=\dfrac{tx^{2}}{(tx)^{2}-2x^{2}}\ \text{，得}\ f(t)=\dfrac{t}{t^{2}-1}\ \text{，}\\
+    &\text{即}\ f(x)=\dfrac{x}{x^{2}-1}\ \text{。}
+    \end{aligned} \]
+    
+\end{enumerate}
+
+
+\textbf{易错提示：}
+\begin{itemize}
+    \item 没有解题思路惯性思维
+    \item 换元法不熟练
+\end{itemize}
+
+\end{solution}
+
+\newproblem
+
+\begin{problem}[双x变形式求函数]
+计算下列极限：设函数 $f(x)$ 的定义域为 $(0,+\infty)$ ，且满足 $2f(x)+x^2f\left(\dfrac{1}{x}\right)=\dfrac{x^2+2x}{\sqrt{1+x^2}}$ ，则 $f(x)=\underline{\qquad}$．
+
+\end{problem}
+
+\begin{solution}
+
+\textbf{解答步骤：}
+\begin{enumerate}
+    \item \important{关键点}：$f(x)$与$f\left(\dfrac{1}{x}\right)$互换，得方程组求解f(x)
+    
+    \item \textbf{详细过程：}
+    \[ \begin{aligned}
+    &\text{由}\ 2 f(x)+x^{2} f\left(\dfrac{1}{x}\right)=\dfrac{x^{2}+2 x}{\sqrt{1+x^{2}}}\ \text{，得} \\
+    &2 f\left(\dfrac{1}{x}\right)+\dfrac{1}{x^{2}} f(x)=\dfrac{\dfrac{1}{x^{2}}+\dfrac{2}{x}}{\sqrt{1+\dfrac{1}{x^{2}}}}
+    =\dfrac{\dfrac{1+2 x}{x^{2}}}{\dfrac{\sqrt{1+x^{2}}}{x}}=\dfrac{1+2 x}{x \sqrt{1+x^{2}}}\ \text{，}\\
+    &\text{结合以上两式，消去}\ f\left(\dfrac{1}{x}\right)\ \text{，可得}\ f(x)=\dfrac{x}{\sqrt{1+x^{2}}}\ \text{。}
+    \end{aligned} \]
+    
+\end{enumerate}
+
+
+\textbf{易错提示：}
+\begin{itemize}
+    \item 认真计算，避免代数运算错误
+        \begin{enumerate}
+            \item 消去$f\left(\dfrac{1}{x}\right)$时，只让一个式子做变换，减少出错概率
+            \item $\dfrac{1}{x^2}+\dfrac{2}{x}=\dfrac{1+2x}{x^2}\neq\dfrac{2+x}{x^2}$
+            \item 计算到$\dfrac{3}{2}f(x)=\dfrac{1}{\sqrt{1+x^2}}\cdot\dfrac{3x}{2}$时，不要丢单独计算出来的$\dfrac{3x}{2}$的$x$
+        \end{enumerate}
+\end{itemize}
+
+\end{solution}
+
+\end{document}

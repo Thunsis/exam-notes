@@ -1,0 +1,96 @@
+% !TeX program = xelatex
+\documentclass{ctexart}
+\usepackage{../../../templates/note-template}
+
+\title{函数极限与连续错题集}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{函数概念与特性}
+
+\begin{theorem}[函数]
+    我们只研究单值函数，即对于每一个 $x$，函数 $y=f(x)$ 有唯一确定的值的函数
+\end{theorem}
+
+\begin{theorem}[反函数]
+    把函数$y=f(x)$的x和y互换位置（定义域和值域也互换），得到新的函数$y=f^{-1}(x)$称为$f(x)$的反函数    
+    \begin{enumerate}
+        \item 由于$y=f(x)$和$y=f^{-1}(x)$都是单值函数，故对于每一个 $x$，函数 $y$ 有唯一确定的值，对于每一个 $y$，函数 $x$ 也有唯一确定的值。又因严格单调函数一定是一一对应的函数，而一一对应的函数不一定是单调函数，故：\\
+        “是严格单调函数”$\rightarrow$“是一一对应的函数”$\Leftrightarrow$“有反函数”
+        \item $f^{-1}(x)f(x)=x$，$f(x)f^{-1}(x)=x$
+        \item $y=f(x)$和$x=f^{-1}(y)$是同一个函数，在同一坐标系上的图像也完全重合，$y=f(x)$和$y=f^{-1}(x)$才互为反函数且因x，y互换，函数图像关于$y=x$对称
+        \item $y=f(x)$和$y=f^{-1}(x)$在区间内的单调性相同，且在交点处的函数值相等
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}[3个双曲函数]反双曲正弦函数：$y=\ln(x+\sqrt{x^2+1})$，双曲正弦函数：$y=\dfrac{e^x-e^{-x}}{2}$，双曲余弦函数：$y=\dfrac{e^x+e^{-x}}{2}$
+    \begin{itemize}
+        \item 定义域都是$(-\infty,+\infty)$
+        \item $y=\ln(x+\sqrt{x^2+1})$和$y=\dfrac{e^x-e^{-x}}{2}$互为反函数，都是奇函数，且都单调递增
+        \item $y=\dfrac{e^x+e^{-x}}{2}$是偶函数，于y轴相交于点$(0,1)$
+    \end{itemize}
+    \textbf{函数图像如下：}
+
+    \begin{center}
+        \begin{tikzpicture}[scale=1]
+        % 左侧图：双曲正弦和反双曲正弦
+        \begin{scope}[xshift=-3.5cm]
+        % 坐标轴
+        \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+        \draw[->] (0,-3) -- (0,3) node[above] {$y$};
+        
+        % y=x参考线
+        \draw[gray, dashed, thin] (-2,-2) -- (2,2);
+        
+        % 双曲正弦函数 sinh(x) = (e^x - e^(-x))/2
+        \begin{scope}
+        \clip (-2.5,-3) rectangle (2.5,3);
+        \draw[blue, smooth, thick, domain=-2.5:2.5, samples=200] 
+        plot (\x, {(exp(\x) - exp(-\x))/2});
+        \end{scope}
+        
+        % 反双曲正弦函数 arcsinh(x) = ln(x + sqrt(x^2 + 1))
+        \draw[red, smooth, thick, domain=-2.5:2.5, samples=200] 
+        plot (\x, {ln(\x + sqrt(\x*\x + 1))});
+        \end{scope}
+
+        % 右侧图：双曲余弦
+        \begin{scope}[xshift=3.5cm]
+        % 坐标轴
+        \draw[->] (-3,0) -- (3,0) node[right] {$x$};
+        \draw[->] (0,-3) -- (0,3) node[above] {$y$};
+            
+        % 双曲余弦函数 cosh(x) = (e^x + e^(-x))/2
+        \begin{scope}
+        \clip (-2.5,-3) rectangle (2.5,3);
+        \draw[green!60!black, smooth, thick, domain=-2.5:2.5, samples=200] 
+        plot (\x, {(exp(\x) + exp(-\x))/2});
+        \end{scope}
+            
+        % 最小点
+        \draw[fill] (0,1) circle[radius=1.5pt] node[below right] {$(0,1)$};
+        \end{scope}
+
+        % 图例放在底部中间
+        \node[anchor=north, inner sep=1pt] 
+        at (0,-3.5) {
+        \begin{tabular}{c@{\hspace{2em}}c@{\hspace{2em}}c@{\hspace{2em}}c}
+        \bfseries\textcolor{blue}{\rule[0.5ex]{1em}{0.4pt}} $\dfrac{e^x-e^{-x}}{2}$ &
+        \bfseries\textcolor{red}{\rule[0.5ex]{1em}{0.4pt}} $\ln(x+\sqrt{x^2+1})$ &
+        \bfseries\textcolor{green!60!black}{\rule[0.5ex]{1em}{0.4pt}} $\dfrac{e^x+e^{-x}}{2}$ &
+        \bfseries\textcolor{gray}{\rule[0.5ex]{1em}{0.4pt} \tiny dashed} $y=x$
+        \end{tabular}
+        };
+        \end{tikzpicture}
+    \end{center}
+    \textbf{重要结论}
+    \begin{enumerate}
+        \item $x\rightarrow0$时，$y=\ln(x+\sqrt{x^2+1}) \sim x$
+        \item $[ln(x+\sqrt{x^2+1})]'=\dfrac{1}{\sqrt{x^2+1}}$，于是$\int \dfrac{1}{\sqrt{x^2+1}}dx=\ln(x+\sqrt{x^2+1})+C$
+        \item 由于$y=\ln(x+\sqrt{x^2+1})$是奇函数，故$\int_{-1}^1[\ln(x+\sqrt{x^2+1})+x^2]dx=\int_{-1}^1x^2dx=\dfrac{2}{3}$
+    \end{enumerate}
+\end{example}
+
+\end{document}
