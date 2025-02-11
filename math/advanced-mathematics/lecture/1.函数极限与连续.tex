@@ -18,7 +18,7 @@
     把函数$y=f(x)$的x和y互换位置（定义域和值域也互换），得到新的函数$y=f^{-1}(x)$称为$f(x)$的反函数    
     \begin{enumerate}
         \item 由于$y=f(x)$和$y=f^{-1}(x)$都是单值函数，故对于每一个 $x$，函数 $y$ 有唯一确定的值，对于每一个 $y$，函数 $x$ 也有唯一确定的值。又因严格单调函数一定是一一对应的函数，而一一对应的函数不一定是单调函数，故：\\
-        “是严格单调函数”$\rightarrow$“是一一对应的函数”$\Leftrightarrow$“有反函数”
+        “是严格单调函数”$\Rightarrow$“是一一对应的函数”$\Leftrightarrow$“有反函数”
         \item $f^{-1}(x)f(x)=x$，$f(x)f^{-1}(x)=x$
         \item $y=f(x)$和$x=f^{-1}(y)$是同一个函数，在同一坐标系上的图像也完全重合，$y=f(x)$和$y=f^{-1}(x)$才互为反函数且因x，y互换，函数图像关于$y=x$对称
         \item $y=f(x)$和$y=f^{-1}(x)$在区间内的单调性相同，且在交点处的函数值相等
@@ -87,10 +87,104 @@
     \end{center}
     \textbf{重要结论}
     \begin{enumerate}
-        \item $x\rightarrow0$时，$y=\ln(x+\sqrt{x^2+1}) \sim x$
+        \item $x\Rightarrow0$时，$y=\ln(x+\sqrt{x^2+1}) \sim x$
         \item $[ln(x+\sqrt{x^2+1})]'=\dfrac{1}{\sqrt{x^2+1}}$，于是$\int \dfrac{1}{\sqrt{x^2+1}}dx=\ln(x+\sqrt{x^2+1})+C$
         \item 由于$y=\ln(x+\sqrt{x^2+1})$是奇函数，故$\int_{-1}^1[\ln(x+\sqrt{x^2+1})+x^2]dx=\int_{-1}^1x^2dx=\dfrac{2}{3}$
     \end{enumerate}
 \end{example}
 
+\begin{definition}[复合函数]
+    有一函数$y=f(u)$，$u \in D_f$，另有一函数$u=f(x)$，$x \in D_g$满足：
+    \begin{enumerate}
+        \item $u=f(x)$的值域含于在$y=f(u)$的定义域内，即$g(x) \subseteq D_f$
+        \item $u=f(x)$的定义域$D_g$不做要求
+    \end{enumerate}
+    则：
+    \begin{enumerate}
+        \item $y=f[g(x)]$，$x \in D_g$为由$y=f(u)$和$u=f(x)$构成的复合函数
+        \item $f[g(x)]$的值域含于在$y=f(u)$的值域内$f[g(x)]\subseteq f(u)$
+    \end{enumerate}
+\end{definition}
+
+\begin{example}[隐函数]
+    方程$F(x,y)=0$在某区间能满足单值函数的要求，则$F(x,y)=0$在上述区间内确定了一个隐函数$y=y(x)$，求$y(x_0)$时，如好求则直接求出，若不好求则用观察法，例如：
+    \begin{enumerate}
+        \item 设函数$y=y(x)$由方程$lny-\dfrac{x}{y}+x=0$确定，则$y(2)=1$
+        \item 设函数$y=y(x)$由方程$lny+e^{y-1}=\dfrac{x}{2}$确定，则$y(2)=1$
+    \end{enumerate}
+\end{example}
+
+\begin{theorem}[函数的四种特性]
+    要熟练将数学含义和代数式相互转化
+    \begin{enumerate}
+        \item 有界性：$y=f(x)$，$x \in I$有界$\Leftrightarrow$存在$M>0$，使得$|f(x)|\leq M$，$x \in I$
+            \begin{enumerate}
+                \item 不知区间，无法讨论有界性
+                \item 只要在区间I上或其端点处存在点$x_0$，使得$\lim\limits_{x \to x_0}f(x)=\infty$，则$f(x)$无界（举反例）
+                \item 证明有界的思路，给$f(x)$套绝对值，利用各种不等式
+                    \begin{enumerate}
+                        \item 三角函数不等式：$|\sin x|\leq 1$，$|\cos x|\leq 1$，$|\sin x+\cos x|\leq \sqrt{2}$
+                        \item 指数函数不等式：$e^x>1+x$（当$x\neq 0$时）
+                        \item 对数函数不等式：$\ln(1+x)<x$（当$x>0$时）
+                        \item 绝对值不等式：$|a+b|\leq |a|+|b|$，$||a|-|b||\leq |a-b|$
+                        \item 基本不等式：$\dfrac{a+b}{2}\geq \sqrt{ab}$（当$a,b>0$时）
+                        \item 柯西不等式：$(a_1^2+a_2^2+...+a_n^2)(b_1^2+b_2^2+...+b_n^2)\geq (a_1b_1+a_2b_2+...+a_nb_n)^2$
+                    \end{enumerate}
+            \end{enumerate}        
+        \item 单调性：对于任意$x_1$，$x_2 \in D$，$x_1\neq x_2$
+            \begin{flushleft} 
+                \begin{tabular}{|c|c|c|c|}
+                \hline
+                \makecell{单调性} & \makecell{基础定义} & \makecell{高级定义} & \makecell{导数} \\
+                \hline
+                \makecell{单调\\递增} & \makecell{$x_1<x_2$\\$\Rightarrow$\\$f(x_1)<f(x_2)$} & \makecell{$(x_1-x_2)[f(x_1)-f(x_2)]>0$} & \makecell{$f'(x)>0$} \\
+                \hline
+                \makecell{单调\\递减} & \makecell{$x_1<x_2$\\$\Rightarrow$\\$f(x_1)>f(x_2)$} & \makecell{$(x_1-x_2)[f(x_1)-f(x_2)]<0$} & \makecell{$f'(x)<0$} \\
+                \hline
+                \makecell{单调\\不减} & \makecell{$x_1<x_2$\\$\Rightarrow$\\$f(x_1)\leq f(x_2)$} & \makecell{$(x_1-x_2)[f(x_1)-f(x_2)]\geq 0$} & \makecell{$f'(x)\geq 0$} \\
+                \hline
+                \makecell{单调\\不增} & \makecell{$x_1<x_2$\\$\Rightarrow$\\$f(x_1)\geq f(x_2)$} & \makecell{$(x_1-x_2)[f(x_1)-f(x_2)]\leq 0$} & \makecell{$f'(x)\leq 0$} \\
+                \hline
+                \end{tabular}
+                \end{flushleft}
+        \item 奇偶性：
+            \begin{enumerate}
+                \item 基础定义：若定义域关于原点对称，且
+                    \begin{enumerate}
+                        \item 对于任意$x$，有$f(-x)=-f(x)\Leftrightarrow y=f(x)$是奇函数$\Leftrightarrow y=f(x)$关于原点对称$\Rightarrow y=f(0)=0$
+                        \item 对于任意$x$，有$f(-x)=f(x)\Leftrightarrow y=f(x)$是偶函数$\Leftrightarrow y=f(x)$关于y轴对称
+                        \item 对于任意$x$，有$f(-x)=\pm f(x)\Leftrightarrow y=f(x)$是奇偶函数$\Leftrightarrow y=f(x)$关于原点且关于y轴对称
+                    \end{enumerate}
+                \item 重要结论
+                    \begin{itemize}
+                        \item $f(x)+f(-x)$必是偶函数，如$y=\dfrac{e^x+e^{-x}}{2}$
+                        \item $f(x)-f(-x)$必是奇函数，如$y=\dfrac{e^x-e^{-x}}{2}$
+                        \item $f(x)f(-x)$必是偶函数
+                        \item $ln[f(x)/f(-x)]$必是奇函数
+                    \end{itemize}
+                \item 复合函数$f[g(x)]$的奇偶性（内偶则偶，内奇同外）
+                    \begin{itemize}
+                        \item 奇$[$偶$]$ $\Rightarrow$ 偶，如$sinx^2$
+                        \item 偶$[$奇$]$ $\Rightarrow$ 偶，如$cos(sinx)$，$|sinx|$
+                        \item 奇$[$奇$]$ $\Rightarrow$ 奇，如$sin\dfrac{1}{x}$，$\sqrt[3]{tanx}$
+                        \item 偶$[$偶$]$ $\Rightarrow$ 偶，如$cos|x|$，$|cosx|$
+                        \item 非奇非偶$[$偶$]$ $\Rightarrow$ 偶，如$e^{x^2}$，$ln|x|$
+                    \end{itemize}
+                \item 特殊函数的奇偶性：$[ln(x+\sqrt{x^2+1})]'=\dfrac{1}{\sqrt{x^2+1}}$ （奇变偶）
+                \item 导数的奇偶性：求导后奇偶互变
+                \item 积分的奇偶性，奇函数积分变偶函数
+                \item 高级奇偶性判别式：设对任意的x，y，都有$f(x+y)=f(x)+f(y)$，则$f(x)$是奇函数
+                    \begin{itemize}
+                        \item 证明思路：先$f(x+0)=f(x)+f(0)$，得证$f(0)=0$，后$f(x-x)=f(x)+f(-x)=0$，得证$f(-x)=-f(x)$
+                    \end{itemize}
+            \end{enumerate}
+        \item 周期性：$y=f(x)$是周期函数$\Leftrightarrow$存在$T>0$，使得$f(x+T)=f(x)$，若$g(x)$以T为周期，则：
+            \begin{itemize}
+                \item $g(ax+b)$以$\dfrac{T}{|a|}$为周期
+                \item 复合函数$f[g(x)]$一定是周期函数，如$e^{sinx}$，$cos^2x$
+                \item $g'(x)$依旧是以T为周期的周期函数
+                \item 只有当$\int_{0}^{T}g(x)dx=0$时，$\int_{0}^{x}g(t)dt$才是以T为周期的周期函数
+            \end{itemize}
+    \end{enumerate}
+\end{theorem}
 \end{document}
